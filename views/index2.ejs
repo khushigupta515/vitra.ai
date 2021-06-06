@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Page-2</title>
+    </head>
+    <body>
+        
+        <div>
+            <ul>
+                <% users.forEach(function(user){ %>
+                   <% var balance = (user.balance.replace(/,/g, '')).substring(1) %>
+                   <%  balance = parseFloat(balance) %>
+                   <% if(2000 > balance && user.isActive == false){%>
+                            <%=user.name %>
+                    <% } %>
+                     
+                <% }) %>
+              </ul>
+        </div>
+        
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Page-1</title>
+    </head>
+    <body>
+        <div>
+            <form method='GET' id='myform' action='/updatepeople' >
+                <label>Select Range in Dollars</label><br>
+                <input type='range' min='1000' max='4000' name='slidervalue' value='<%=slider_value%>' onchange='myFunction()'>
+                <br>
+            </form>
+        </div>
+        <div>
+            <ul>
+                <% users.forEach(function(user){ %>
+                   <% var balance = (user.balance.replace(/,/g, '')).substring(1) %>
+                   <%  balance = parseFloat(balance) %>
+                   <% if( slider_value > balance){%>
+                            <%= balance %>
+                    <% } %>
+                     
+                <% }) %>
+              </ul>
+        </div>
+        
+    </body>
+    <script>
+       function myFunction()
+        {
+            var slidervalue = document.getElementById('myform').submit();
+        }
+        
+    </script>
+</html>
