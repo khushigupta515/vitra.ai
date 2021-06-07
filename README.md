@@ -1,2 +1,1 @@
-# vitral.ai
-Internship project
+# vitra.ai
