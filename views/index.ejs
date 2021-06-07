@@ -1,33 +1,56 @@
 <html>
     <head>
         <title>Page-1</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel='stylesheet' href='css/index.css'>
     </head>
     <body>
+        <div id="forthelink"><a href="/secondpage"><i class="fa fa-angle-right"></i>Page Two</a></div>
         <div>
             <form method='GET' id='myform' action='/updatepeople' >
                 <label>Select Range in Dollars</label><br>
-                <input type='range' min='1000' max='4000' name='slidervalue' value='<%=slider_value%>' onchange='myFunction()'>
+                <input type='range' min='1000' max='4000' id='slidervalue' name='slidervalue' value='<%=slider_value%>' onchange='myFunction()' oninput="slider_value.innerHTML = slidervalue.value">
+                <span id='slider_value'>Selected value: <%=slider_value%></span>
                 <br>
             </form>
         </div>
-        <div>
-            <ul>
-                <% users.forEach(function(user){ %>
+        <div id="table" >
+            <table class="table table-striped table-bordered">
+                <caption>List of people whose Balance is in the above range.</caption>
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Balance</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">PhoneNumber</th>
+                  </tr>
+                </thead>
+                <tbody>
+                 <% users.forEach(function(user){ %>
                    <% var balance = (user.balance.replace(/,/g, '')).substring(1) %>
                    <%  balance = parseFloat(balance) %>
                    <% if( slider_value > balance){%>
-                            <%= balance %>
+                    <tr>
+                        <td><%= user.name %></td>
+                        <td><%= user.balance %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.phone %></td>
+                    </tr>
+                            
                     <% } %>
                      
                 <% }) %>
-              </ul>
+            </tbody>
+        </table>
         </div>
-        
+     
     </body>
     <script>
+       
        function myFunction()
-        {
-            var slidervalue = document.getElementById('myform').submit();
+        {   
+            document.getElementById('myform').submit();
         }
         
     </script>

@@ -1,20 +1,54 @@
 <html>
     <head>
         <title>Page-2</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel='stylesheet' href='css/index.css'>
+        
     </head>
     <body>
         
         <div>
-            <ul>
-                <% users.forEach(function(user){ %>
-                   <% var balance = (user.balance.replace(/,/g, '')).substring(1) %>
-                   <%  balance = parseFloat(balance) %>
-                   <% if(2000 > balance && user.isActive == false){%>
-                            <%=user.name %>
-                    <% } %>
-                     
-                <% }) %>
-              </ul>
+            <div id="forthelink"><a href="/"><i class="fa fa-angle-left"></i>Page One</a></div>
+            <div id="table" >
+                <table class="table table-striped table-bordered">
+                    <caption> List of friends for people who are not active (isActive: false) and whose Balance is less than $2000</caption>
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">isActive</th>
+                        <th scope="col">Balance</th>
+                        <th scope="col" colspan="2">Friend</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+           
+                        <% users.forEach(function(user){ %>
+                        <% var balance = (user.balance.replace(/,/g, '')).substring(1) %>
+                        <%  balance = parseFloat(balance) %>
+                        <% if(2000 > balance && user.isActive == false){%>
+                            <tr>
+                                <td rowspan="<%= user.friends.length + 1%>"><%= user.name %></td>
+                                <td rowspan="<%= user.friends.length + 1 %>"><%= user.isActive %></td>
+                                <td rowspan="<%= user.friends.length + 1%>"><%= user.balance %></td>
+                                <th>Name </th>
+                                <th>Balance</th>
+                            </tr>    
+                              
+                                <% user.friends.forEach(function(friend){ %>
+                                    <tr>
+                                    <td><%= friend.name %></td>
+                                    <td><%= friend.id %></td>
+                                    </tr>
+                                 
+                                <% }) %>
+                            
+                            
+                            <% } %>
+                            
+                        <% }) %>
+                    </tbody>
+                </table>
         </div>
         
     </body>

@@ -1,0 +1,77 @@
+body {
+    margin: 5%;
+    padding: 1%;
+    font-family: sans-serif;
+    
+}
+input[type=range] {
+    -webkit-appearance: none;
+    margin: 10px 0;
+    width: 80%;
+  }
+  
+  input[type=range]::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    height: 10px;
+    background: #3071A9;
+    border-radius: 5px;
+    border: 1px solid black;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    
+    border: 2px solid black;
+    height: 30px;
+    width: 15px;
+    border-radius: 5px;
+    background: #FFFFFF;
+   -webkit-appearance: none;
+    margin-top: -11px;
+  }
+  form#myform {
+    margin: 1%;
+    padding: 6%;
+    background: #E5E4E2;
+}
+label {
+    margin: 2%;
+    padding: 1%;
+}
+span#slider_value {
+    display: inline-block;
+    width:15%;
+    background: white;
+    padding: 0.6%;
+    text-align: center;
+    font-size: small;
+    font-weight: bolder;
+}
+
+.table {
+        margin: auto;
+        width: 70% !important; 
+        font-size: 15px;
+        text-align: center;
+        
+     }
+    
+    div#forthelink  a {
+        padding: 1%;
+        padding-left: 1.5%;
+        padding-right: 1.5%;
+        margin: 1%;
+        background: #3071A9;
+        text-decoration: none;
+        color:white;
+        border-radius: 10px;
+    }
+    div#forthelink {
+        margin-bottom: 3%;
+        text-align: right;
+        
+    }
+    .fa {
+        font-size: large;
+        font-weight: bolder;
+        margin-right: 10px;
+    }
+    

@@ -1,7 +1,7 @@
 const people = require('../people.json');
 
 module.exports.home = function(req,res){
-    res.render('index',{users:people,slider_value: 1000 });
+    res.render('index',{users:people,slider_value: 2500 });
 }
 module.exports.homeafterupdate = function(req,res){
     console.log(req.query.slidervalue);
